@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <title>PaisaWise - Expense Tracker with Pie Chart</title>
   <style>
     body {
-      background: #f0f2f5;
+      background: white;
       font-family: 'Poppins', sans-serif;
       text-align: center;
       display: flex;
@@ -27,7 +27,7 @@
       background: white;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 4px 10px black;
     }
 
     .container {
@@ -51,7 +51,7 @@
     }
 
     button {
-      background: #28a745;
+      background: grey;
       color: white;
       cursor: pointer;
       font-weight: bold;
@@ -60,7 +60,7 @@
     .expense-list {
       text-align: left;
       padding: 10px;
-      background: #f8f9fa;
+      background: white;
       border-radius: 8px;
       max-height: 200px;
       overflow-y: auto;
@@ -136,7 +136,7 @@
     <div class="chart-container">
       <h2>Expenses Pie Chart</h2>
       <div class="pie-chart" id="pieChart"></div>
-      <div class="legend" id="legend"></div>
+      <div class="final" id="final"></div>
     </div>
   </div>
 
@@ -205,12 +205,12 @@
       }).join(', ');
 
       pieChart.style.background = `conic-gradient(${segments})`;
-      updateLegend();
+      updateFinal();
     }
 
-    function updateLegend() {
-      const legend = document.getElementById("legend");
-      legend.innerHTML = `<ul>${expenses.map((e, i) => 
+    function updateFinal() {
+      const final = document.getElementById("final");
+      final.innerHTML = `<ul>${expenses.map((e, i) => 
         `<li><span class="color-box" style="background-color: ${colors[i % colors.length]};"></span>${e.type} - ${(e.amount / totalExpense * 100).toFixed(1)}%</li>`
       ).join('')}</ul>`;
     }
